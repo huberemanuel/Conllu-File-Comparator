@@ -104,28 +104,27 @@ for i in range(len(data_reference_tokenlist)):
     sentence = data_reference_tokenlist[i]
     for j in range(len(sentence)):
         token = sentence[j]
-        if token["deprel"] in core_relations_refsent.keys():
+        token_deprel = token["deprel"].split(":")[0]
+        if token_deprel in core_relations_refsent.keys():
             dest = token["form"].lower()
             org = sentence[token["head"] - 1]
             org = org["form"].lower()
-            core_relations_refsent[token["deprel"]].append((dest, org))
+            core_relations_refsent[token_deprel].append((dest, org))
 
     # Comparando as relações core da sentença de teste com as de referência, caso existam
     if i < len(data_test_tokenlist):
         sentence = data_test_tokenlist[i]
         for j in range(len(sentence)):
             token = sentence[j]
-            if (
-                token["deprel"] in core_relations_refsent.keys()
-                and len(core_relations_refsent[token["deprel"]]) > 0
-            ):
-                core_relations_testsent_present[token["deprel"]] += 1
+            token_deprel = token["deprel"].split(":")[0]
+            if token_deprel in core_relations_refsent.keys():
+                core_relations_testsent_present[token_deprel] += 1
                 dest = token["form"].lower()
                 org = sentence[token["head"] - 1]
                 org = org["form"].lower()
-                dict_count_core_relations[token["deprel"]] += 1
-                if (dest, org) in core_relations_refsent[token["deprel"]]:
-                    core_relations_testsent_correct[token["deprel"]] += 1
+                dict_count_core_relations[token_deprel] += 1
+                if (dest, org) in core_relations_refsent[token_deprel]:
+                    core_relations_testsent_correct[token_deprel] += 1
 
     # Calculando as medidas e colocando nas respectivas listas
     for key_ in dict_precision_values.keys():
