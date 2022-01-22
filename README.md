@@ -1,27 +1,22 @@
 # Conllu-File-Comparator
-Programa em Python que compara as relações de dependência "nsubj", "csubj", "obj" e "iobj" entre um arquivo ".conllu" de teste e outro ".conllu" de referência.
+Programa em Python que compara as relações de dependência entre um arquivo ".conllu" de teste e outro ".conllu" de referência.
 
-O objetivo do programa é verificar a acurácia de um parser de dependências em relação a um arquivo de referência (anotação correta das sentenças), calculando a *precisão*, *cobertura*, *medida-f* e *desvio padrão da precisão e da cobertura* com relação a quatro relações de dependência: [**nsubj**](https://universaldependencies.org/en/dep/nsubj.html), [**csubj**](https://universaldependencies.org/en/dep/csubj.html), [**obj**](https://universaldependencies.org/u/dep/obj.html) e [**iobj**](https://universaldependencies.org/u/dep/iobj.html).
+O objetivo do programa é verificar a acurácia de um parser de dependências em relação a um arquivo de referência (anotação correta das sentenças), calculando a *precisão*, *cobertura*, *medida-f* e *desvio padrão da precisão e da cobertura* com relação a quatro relações de dependência
 
-### Biblioteca *conllu* do Python
+### Setup
 
-O parser CoNLL-U analisa um arquivo formatado em [CoNLL-U](https://universaldependencies.org/format.html) em um Python [dictionary](https://www.w3schools.com/python/python_dictionaries.asp). CoNLL-U geralmente é o formato padrão de saída de parsers de dependência em processamento de linguagem natural.
-
-É necessário que essa biblioteca esteja instalada no computador do usuário para que ele possa executar o programa. Para instalar a biblioteca, basta executar o seguinte comando no terminal:<br>
 ```
-pip3 install conllu
+pip3 install -r requirements.txt
 ```
 
 ### Execução do programa
 
 O usuário deve fazer o download do `.zip` da pasta do repositório e descompactar. Para comparar os dois arquivos `.conllu` o usuário deve colocar os arquivos dentro da pasta descompactada do repositório e abrir o terminal dentro desse repositório (referenciando o repositório). Após isso, é só executar o programa inserindo o seguinte comando no terminal:<br>
 ```
-python3 conllu_file_comparator.py
+python3 conllu_file_comparator.py caminho/gold_file.conllu caminho/system_file.conllu
 ```
 
-Ao iniciar a execução, o programa irá solicitar o nome do arquivo de referência (Ex: referencia.conllu) e, em seguida, o nome do arquivo de teste (Ex: teste.conllu).
-
-O programa deverá dar uma saída no formato do resultado a seguir, exibindo a quantidade e as medidas precisão, cobertura, medida-f e desvio padrão das medidas precisão e cobertura de cada relação core (subj, csubj, obj e iobj):
+O programa deverá dar uma saída no formato do resultado a seguir, exibindo a quantidade e as medidas precisão, cobertura, medida-f e desvio padrão das medidas precisão e cobertura de cada relação:
 ```
 RELATION "nsubj"
 
