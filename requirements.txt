@@ -1,7 +1,6 @@
 black==21.12b0
 click==8.0.3
 conllu==4.4.1
-dataclasses==0.8
 flake8==4.0.1
 importlib-metadata==4.2.0
 isort==5.10.1
